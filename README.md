@@ -5,12 +5,14 @@ You (being anyone who is not PayFast (Pty) Ltd) may download and use this plugin
 Except as expressly indicated in this licence, you may not use, copy, modify or distribute this plugin / code or part thereof in any way.
 
 INTEGRATION:
-1. Unzip the module to a temporary location on your computer
-2. Copy the “admin” and “catalog” folders in the archive to your base “OpenCart” folder
-- This should NOT overwrite any existing files or folders and merely supplement them with the PayFast files
-- This is however, dependent on the FTP program you use
-- If you are concerned about this, rather copy the individual files across as per instructions below
-3. Login to the admin section of your OpenCart installation
+1. Download the module.
+2. Make sure the module is a zip file with a name payfast.ocmod.zip. If you downloaded a zip file, then you can just rename it to payfat.ocmod.zip. If you downloaded the raw code files or cloned the repository, then you can just zip it using any of your favorite compression software.
+3. Login to the admin section of your OpenCart installation, Go to Extensions > Installer and upload the zip file by clicking the button with the upload icon in the top right corner of your dashboard.
+   ![image](https://github.com/PayFast/mod-opencart_4/assets/71287850/076cc230-2316-4835-8c1c-1aab3ed6fe7e)
+   
+   Then install the extension by clicking at the payfast install button.
+   ![image](https://github.com/PayFast/mod-opencart_4/assets/71287850/f09702e9-1a08-4efb-991b-8d5050ecd8a9)
+
 4. Navigate to the Extensions > Payments page
 5. Scroll down to the PayFast.co.za payment method and click the “Install” button to install the module
 6. Once the module is installed, click on “Edit” button.

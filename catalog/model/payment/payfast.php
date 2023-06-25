@@ -14,16 +14,24 @@ use Opencart\System\Engine\Model;
 
 class PayFast extends Model
 {
-    public function getMethod($address, $total = null)
+    public function getMethods($address, $total = null)
     {
+
+        //Avoiding the warning messages
+        if (!$address) {
+            $address['country_id'] = 0;
+            $address['zone_id'] = 0;
+        }
+
+
         $this->load->language('extension/payfast/payment/payfast');
 
         /** @noinspection PhpUndefinedConstantInspection */
         $query = $this->db->query("SELECT * FROM " . DB_PREFIX .
-                                  "zone_to_geo_zone WHERE geo_zone_id = '" .
-                                  (int)$this->config->get('payment_payfast_geo_zone_id') .
-                                  "' AND country_id = '" . (int)$address['country_id'] . "' AND ( zone_id = '" .
-                                  (int)$address['zone_id'] . "' OR zone_id = '0' )");
+            "zone_to_geo_zone WHERE geo_zone_id = '" .
+            (int)$this->config->get('payment_payfast_geo_zone_id') .
+            "' AND country_id = '" . (int)$address['country_id'] . "' AND ( zone_id = '" .
+            (int)$address['zone_id'] . "' OR zone_id = '0' )");
 
         if (!$this->config->get('payment_payfast_geo_zone_id')) {
             $status = true;
@@ -42,10 +50,18 @@ class PayFast extends Model
         $methodData = array();
 
         if ($status) {
+
+            $optiondata['payfast'] = [
+                'code' => 'payfast.payfast',
+                'name' => 'Payfast Payment'
+            ];
+
             $methodData = array(
                 'code'       => 'payfast',
                 'title'      => $this->language->get('text_pay_method'),
+                'name'      => $this->language->get('text_pay_method'),
                 'terms'      => '',
+                'option'    => $optiondata,
                 'sort_order' => $this->config->get('payment_payfast_sort_order')
             );
         }
